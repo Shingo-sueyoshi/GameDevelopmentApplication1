@@ -3,7 +3,8 @@
 #include "Scene/Scene.h"
 
 //メイン関数
-int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPSTR IpCmdLine, _In_ int nShowCmd)
+int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance,
+	_In_ LPSTR IpCmdLine, _In_ int nShowCmd)
 {
 	//Windowモードで起動
 	ChangeWindowMode(TRUE);

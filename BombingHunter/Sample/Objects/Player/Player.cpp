@@ -83,7 +83,7 @@ void Player::Movement()
 		velocity.x += -1.0f;
 		flip_flag = TRUE;
 	}
-	else if (InputControl::GetKey(KEY_INPUT_LEFT)
+	else if (InputControl::GetKey(KEY_INPUT_RIGHT)
 	{
 		velocity.x += 1.0f;
 		flip_flag = FALSE;
@@ -99,4 +99,24 @@ void Player::Movement()
 
 void Player::AnimationControl()
 {
+
+	//
+	animation_count++;
+
+	//
+	if (animation_count >= 60)
+	{
+		//
+		animation_count = 0;
+
+		//
+		if (image == animation[0])
+		{
+			image = animation[1];
+		}
+		else
+		{
+			image = animation[0];
+		}
+	}
 }

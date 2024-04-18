@@ -8,8 +8,8 @@ public:
 
 public:
 	Vector2D();
-	Vector2D(float sclalr);
-	Vector2D(float mx, float my)
+	Vector2D(float scalar);
+	Vector2D(float mx, float my);
 	~Vector2D();
 
 public:
