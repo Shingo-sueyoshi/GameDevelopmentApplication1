@@ -1,8 +1,10 @@
 #include "Scene.h"
 
 #include "../Objects/Player/Player.h"
+#include "../Objects/Enemy/Enemy.h"
 
-Scene::Scene():objects()
+
+Scene::Scene() :objects()
 {
 }
 
@@ -15,7 +17,8 @@ Scene::~Scene()
 void Scene::Initialize()
 {
 	//ÉvÉåÉCÉÑÅ[Çê∂ê¨Ç∑ÇÈ
-	CreateObject<Player>(Vector2D(320.0f, 240.0f));
+	CreateObject<Player>(Vector2D(320.0f, 70.0f));
+	CreateObject<Enemy>(Vector2D(320.0f, 420.0f));
 }
 
 void Scene::Update()
