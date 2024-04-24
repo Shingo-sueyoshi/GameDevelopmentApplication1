@@ -7,9 +7,11 @@
 class GameObject
 {
 protected:
-	unsigned int color;		//色情報
-	Vector2D location;		//位置情報
-	Vector2D box_size;		//box_size情報
+	Vector2D location;		//色情報
+	double scale;			//大きさ
+	double radian;			//向き
+	int image;		//描画する画像
+	int sound;		//再生する音源
 
 public:
 
@@ -25,7 +27,8 @@ public:
 	virtual void Finalize();			//終了時処理
 
 public:
-	virtual void OnHitCollision(GameObject* hit_object);		//初期化処理
+	virtual void OnHitCollision(GameObject* hit_object);		//当たり判定通知処理
+
 	Vector2D GetLocation() const;								//位置情報取得（Vector2D）
 	void SetLocation(const Vector2D& location);					//位置情報変更処理
 

@@ -1,6 +1,8 @@
 #include "Scene.h"
 
-Scene::Scene():object()
+#include "../Objects/Player/Player.h"
+
+Scene::Scene():objects()
 {
 }
 

@@ -13,19 +13,19 @@ void InputControl::Update()
 }
 bool InputControl::GetKey(int key_code)
 {
-	return ChackKeyCodeRange(key_code) && ((now_key[key_code] == TRUE) && (old_key[key_code] == TRUE));
+	return CheckKeyCodeRange(key_code) && ((now_key[key_code] == TRUE) && (old_key[key_code] == TRUE));
 }
 bool InputControl::GetKeyDown(int key_code)
 {
-	return ChackKeyCodeRange(key_code) && ((now_key[key_code] == TRUE) && (old_key[key_code] == FALSE));
+	return CheckKeyCodeRange(key_code) && ((now_key[key_code] == TRUE) && (old_key[key_code] == FALSE));
 }
 
 bool InputControl::GetKeyUp(int key_code)
 {
-	return ChackKeyCodeRange(key_code) && ((now_key[key_code] == FALSE) && (old_key[key_code] == TRUE));
+	return CheckKeyCodeRange(key_code) && ((now_key[key_code] == FALSE) && (old_key[key_code] == TRUE));
 }
 
-bool InputControl::ChackKeyCodeRange(int key_code)
+bool InputControl::CheckKeyCodeRange(int key_code)
 {
 	return (0 <= key_code && key_code < D_KEYCODE_MAX);
 }

@@ -16,5 +16,5 @@ public:
 	static bool GetKeyUp(int key_code);
 
 private:
-	static bool ChackKeyCodeRange(int key_code);
+	static bool CheckKeyCodeRange(int key_code);
 };

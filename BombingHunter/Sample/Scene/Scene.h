@@ -7,7 +7,7 @@
 class Scene
 {
 private:
-	std::vector<GameObject*>object;
+	std::vector<GameObject*>objects;
 
 public:
 	Scene();
@@ -37,16 +37,16 @@ private:
 
 		}
 		//初期化処理
-		new_object->Inithalize();
+		new_object->Initialize();
 
 		//位置情報の設定
 		new_object->SetLocation(location);
 
 		//オブジェクトリストに追加
-		object.push_back(new_object);
+		objects.push_back(new_object);
 	
 		//インスタンスのポインタを返却
-		return new_instance
+		return new_instance;
 
 	}
 };
