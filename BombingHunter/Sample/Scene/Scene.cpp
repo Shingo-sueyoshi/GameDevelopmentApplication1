@@ -17,6 +17,15 @@ Scene::~Scene()
 
 void Scene::Initialize()
 {
+	//画像読込み
+	back_ground = LoadGraph("Resource/images/BackGround.png");
+
+	//エラーチェック
+	if (back_ground == -1)
+	{
+		throw("Resource/images/BackGround.pngがありません\n");
+	}
+
 	//プレイヤーを生成する
 	CreateObject<Player>(Vector2D(320.0f, 240.0f));
 }
@@ -50,6 +59,12 @@ void Scene::Update()
 
 void Scene::Draw() const
 {
+	//背景画像を描画する
+	DrawGraph(0, 0, back_ground, FALSE);
+
+	//画像の縮小
+	DrawExtendGraph(0, 0, 640, 550, back_ground, FALSE);
+
 	//シーンに存在するオブジェクトの描画処理
 	for (GameObject* obj : objects)
 	{
