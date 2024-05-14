@@ -25,19 +25,20 @@ void Player::Initialize()
 	//エラーチェック
 	if (animation[0] == -1 || animation[1] == -1)
 	{
-		throw("鳥パイロットの画像がありません/n");
+		throw("鳥パイロットの画像がありません\n");
 	}
 
 	//向きの設定
 	radian = 0.0f;
 
-	//当たり判定大きさ
-	scale = 64.0f;
+	//当たり判定の大きさを設定
+	box_size = 64.0;
 
 	//初期画像の設定
 	image = animation[0];
 }
 
+//更新処理
 void Player::Update()
 {
 	//移動処理
@@ -56,10 +57,12 @@ void Player::Draw() const
 	//デバック用
 #if _DEBUG
 	//当たり判定可視化
-	Vector2D ul = location - (scale / 2.0f);
-	Vector2D br = location + (scale / 2.0f);
+	Vector2D box_collision_upper_left = location - (box_size / 2.0f);
+	Vector2D box_collision_lower_right = location + (box_size / 2.0f);
 
-	DrawBoxAA(ul.x, ul.y, br.x, br.y, GetColor(255, 0, 0), FALSE);
+	DrawBoxAA(box_collision_upper_left.x, box_collision_upper_left.y,
+		box_collision_lower_right.x, box_collision_lower_right.y, 
+		GetColor(255, 0, 0), FALSE);
 
 #endif
 }
@@ -73,11 +76,13 @@ void Player::Finalize()
 
 }
 
+//当たり判定通知処理
 void Player::OnHitCollision(GameObject* hit_object)
 {
 	//当たった時
 }
 
+//移動処理
 void Player::Movement()
 {
 	//移動の速さ
@@ -99,10 +104,11 @@ void Player::Movement()
 		velocity.x = 0.0f;
 	}
 
-	//下冤罪の位置座標に速さを加算
+	//現在の位置座標に速さを加算
 	location += velocity;
 }
 
+//アニメーション制御
 void Player::AnimationControl()
 {
 

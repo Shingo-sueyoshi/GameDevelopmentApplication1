@@ -2,13 +2,14 @@
 
 #include "../Utility/Vector2D.h"
 
+#define D_PIVOT_CENTER		//
 
 //オブジェクトの親クラス（基底クラス）
 class GameObject
 {
 protected:
 	Vector2D location;		//色情報
-	double scale;			//大きさ
+	Vector2D box_size;		//矩形の大きさ
 	double radian;			//向き
 	int image;		//描画する画像
 	int sound;		//再生する音源
@@ -31,6 +32,9 @@ public:
 
 	Vector2D GetLocation() const;								//位置情報取得（Vector2D）
 	void SetLocation(const Vector2D& location);					//位置情報変更処理
+
+	//当たり判定の大きさを取得
+	Vector2D GetBoxSize() const;
 
 };
 
