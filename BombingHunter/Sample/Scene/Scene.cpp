@@ -63,7 +63,7 @@ void Scene::Draw() const
 	DrawGraph(0, 0, back_ground, FALSE);
 
 	//画像の縮小
-	DrawExtendGraph(0, 0, 640, 550, back_ground, FALSE);
+	DrawExtendGraph(0, 0, 1000, 600, back_ground, FALSE);
 
 	//シーンに存在するオブジェクトの描画処理
 	for (GameObject* obj : objects)

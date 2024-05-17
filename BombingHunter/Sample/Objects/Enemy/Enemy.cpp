@@ -68,7 +68,7 @@ void Enemy::Draw() const
 	}
 
 	//プレイヤー画像の描画
-	DrawRotaGraphF(location.x, location.y, 1.0, radian, image, TRUE, flip_flag);
+	DrawRotaGraphF(location.x, location.y, 0.8, radian, image, TRUE, flip_flag);
 
 	//親クラスの描画処理を呼び出す
 	__super::Draw();
@@ -96,13 +96,13 @@ void Enemy::Movement()
 {
 	//画面端に到達したら、進行方向を反転
 	if (((location.x + direction.x) < box_size.x) ||
-		(640.0f - box_size.x) < (location.x + direction.x))
+		(1000.0f - box_size.x) < (location.x + direction.x))
 	{
 		direction.x *= -1.0f;
 	}
 
 	if (((location.y + direction.y) < box_size.y) ||
-		(480.0f - box_size.y) < (location.y + direction.y))
+		(550.0f - box_size.y) < (location.y + direction.y))
 	{
 		direction.y *= -1.0f;
 	}
