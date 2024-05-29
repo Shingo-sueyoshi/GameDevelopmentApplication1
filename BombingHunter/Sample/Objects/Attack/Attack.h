@@ -1,19 +1,16 @@
 #pragma once
 #include "../GameObject.h"
-class Player :public GameObject
+class Attack :public GameObject
 {
 private:
 	int animation[2];		//アニメーション画像
 	int animation_count;	//アニメーション時間
-	int flip_flag;			//反転フラグ
+	Vector2D direction;			//進行方向
 
-	int attack[4];		//攻撃画像
-	int attack_count;	//攻撃時間
-	int bomb;
 
 public:
-	Player();
-	~Player();
+	Attack();
+	~Attack();
 
 	//初期化処理
 	virtual void Initialize() override;
@@ -25,7 +22,7 @@ public:
 	virtual void Finalize() override;
 
 	//当たり判定通知処理
-	virtual void OnHitCollision(GameObject*hit_object) override;
+	virtual void OnHitCollision(GameObject* hit_object) override;
 
 private:
 	//移動処理
@@ -33,9 +30,6 @@ private:
 
 	//アニメーション制御
 	void AnimationControl();
-
-	//攻撃処理
-	void AttackControl();
-
 };
+
 

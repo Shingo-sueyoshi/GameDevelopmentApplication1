@@ -1,6 +1,7 @@
 #include "Scene.h"
 #include "../Objects/Player/Player.h"
 #include "../Objects/Enemy/Enemy.h"
+#include"../Objects/Attack/Attack.h"
 #include "../Utility/InputControl.h"
 #include "DXLib.h"
 
@@ -53,7 +54,18 @@ void Scene::Update()
 	{
 		CreateObject<Enemy>(Vector2D(100.0f, 400.0f));
 	}
-
+	//ZƒL[‚ğ‰Ÿ‚µ‚½‚çA“G‚ğ¶¬
+	if (InputControl::GetKeyDown(KEY_INPUT_SPACE))
+	{
+		for (int i = 0; i < objects.size(); i++)
+		{
+			if (dynamic_cast<Player*>(objects[i]) != nullptr)
+			{
+				CreateObject<Attack>(objects[i]->GetLocation());       
+			};
+		};
+	
+	}
 
 }
 
