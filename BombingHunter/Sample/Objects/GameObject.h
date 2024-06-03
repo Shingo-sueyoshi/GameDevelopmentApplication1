@@ -8,7 +8,7 @@
 class GameObject
 {
 protected:
-	Vector2D location;		//Fî•ñ
+	Vector2D location;		//ˆÊ’uî•ñ
 	Vector2D box_size;		//‹éŒ`‚Ì‘å‚«‚³
 	double radian;			//Œü‚«
 	int image;		//•`‰æ‚·‚é‰æ‘œ

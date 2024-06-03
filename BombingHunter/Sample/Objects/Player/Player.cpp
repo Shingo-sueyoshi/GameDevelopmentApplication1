@@ -8,10 +8,6 @@ Player::Player():animation_count(0),flip_flag(FALSE)
 	animation[0] = NULL;
 	animation[1] = NULL;
 
-	attack[0] = NULL;
-	attack[1] = NULL;
-	attack[2] = NULL;
-	attack[3] = NULL;
 
 }
 
@@ -27,11 +23,6 @@ void Player::Initialize()
 	animation[0] = LoadGraph("Resource/Images/Tri-pilot/1.png");
 	animation[1] = LoadGraph("Resource/Images/Tri-pilot/2.png");
 
-	attack[0] = LoadGraph("Resource/Images/Bomb/Bomb.png");
-	attack[1] = LoadGraph("Resource/Images/Blast/1.png");
-	attack[2] = LoadGraph("Resource/Images/Blast/2.png");
-	attack[3] = LoadGraph("Resource/Images/Blast/3.png");
-
 	//エラーチェック
 	if (animation[0] == -1 || animation[1] == -1)
 	{
@@ -46,7 +37,6 @@ void Player::Initialize()
 
 	//初期画像の設定
 	image = animation[0];
-	bomb = attack[0];
 }
 
 //更新処理
@@ -86,11 +76,6 @@ void Player::Finalize()
 	//使用した画像を解放
 	DeleteGraph(animation[0]);
 	DeleteGraph(animation[1]);
-
-	DeleteGraph(attack[0]);
-	DeleteGraph(attack[1]);
-	DeleteGraph(attack[2]);
-	DeleteGraph(attack[3]);
 
 }
 
@@ -187,23 +172,4 @@ void Player::AnimationControl()
 			image = animation[0];
 		}
 	}
-}
-
-//攻撃処理
-void Player::AttackControl()
-{
-	//移動の速さ
-	Vector2D velocity = 0.0f;
-
-	if (InputControl::GetKey(KEY_INPUT_SPACE))
-	{
-		//爆弾画像の描画
-		DrawRotaGraphF(location.x, location.y, 0.8, radian, bomb, TRUE);
-
-		velocity.y += -1.0f;
-		
-	}
-	
-	//現在の位置座標に速さを加算
-	location += velocity;
 }

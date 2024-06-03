@@ -21,16 +21,16 @@ void Attack::Initialize()
 {
 	//画像読込み
 	animation[0] = LoadGraph("Resource/Images/Bomb/Bomb.png");
-	//animation[1] = LoadGraph("Resource/Images/BoxAttack/2.png");
+	
 
 	//エラーチェック
 	if (animation[0] == -1 || animation[1] == -1)
 	{
-		throw("箱敵の画像がありません\n");
+		throw("爆弾の画像がありません\n");
 	}
 
 	//向きの設定
-	radian = 0.0f;
+	radian = 1.6f;
 
 	//当たり判定の大きさを設定
 	box_size = 64.0f;
@@ -55,21 +55,9 @@ void Attack::Update()
 //描画処理
 void Attack::Draw() const
 {
-	//画像反転フラグ
-	int flip_flag = FALSE;
 
-	//進行方向によって反転情報を決定する
-	if (direction.x > 0.0f)
-	{
-		flip_flag = FALSE;
-	}
-	else
-	{
-		flip_flag = TRUE;
-	}
-
-	//プレイヤー画像の描画
-	DrawRotaGraphF(location.x, location.y, 0.8, radian, image, TRUE, flip_flag);
+	//爆弾画像の描画
+	DrawRotaGraphF(location.x, location.y, 0.8, radian, image, TRUE);
 
 	//親クラスの描画処理を呼び出す
 	__super::Draw();
@@ -95,6 +83,16 @@ void Attack::OnHitCollision(GameObject* hit_object)
 //移動処理
 void Attack::Movement()
 {
+	if (InputControl::GetKey(KEY_INPUT_SPACE))
+	{
+		int i;
+		for (i= location.y; i < 550; i++)
+		{
+
+			location.y;
+		}
+	}
+
 	
 }
 

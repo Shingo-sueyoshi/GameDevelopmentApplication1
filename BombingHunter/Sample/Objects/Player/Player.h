@@ -7,9 +7,7 @@ private:
 	int animation_count;	//アニメーション時間
 	int flip_flag;			//反転フラグ
 
-	int attack[4];		//攻撃画像
-	int attack_count;	//攻撃時間
-	int bomb;
+	
 
 public:
 	Player();
@@ -34,8 +32,6 @@ private:
 	//アニメーション制御
 	void AnimationControl();
 
-	//攻撃処理
-	void AttackControl();
 
 };
 
