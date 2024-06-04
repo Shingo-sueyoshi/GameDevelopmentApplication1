@@ -39,7 +39,7 @@ void Attack::Initialize()
 	image = animation[0];
 
 	//初期進行方向設定
-	direction = Vector2D(1.0f, -0.5f);
+	direction = Vector2D(0.0f, 1.0f);
 }
 
 //更新処理
@@ -77,23 +77,14 @@ void Attack::Finalize()
 void Attack::OnHitCollision(GameObject* hit_object)
 {
 	//当たった時
-	direction = 0.0f;
+	
 }
 
 //移動処理
 void Attack::Movement()
 {
-	if (InputControl::GetKey(KEY_INPUT_SPACE))
-	{
-		int i;
-		for (i= location.y; i < 550; i++)
-		{
-
-			location.y;
-		}
-	}
-
-	
+	//現在の位置座標に速さを加算
+	location += direction;
 }
 
 //アニメーション制御
@@ -112,7 +103,7 @@ void Attack::AnimationControl()
 		//画像の切り替え
 		if (image == animation[0])
 		{
-			image = animation[1];
+			image = animation[0];
 		}
 		else
 		{

@@ -54,18 +54,20 @@ void Scene::Update()
 	{
 		CreateObject<Enemy>(Vector2D(100.0f, 400.0f));
 	}
-	//Zキーを押したら、敵を生成
+	//SPACEキーを押したら、爆弾を生成
 	if (InputControl::GetKeyDown(KEY_INPUT_SPACE))
 	{
 		for (int i = 0; i < objects.size(); i++)
 		{
 			if (dynamic_cast<Player*>(objects[i]) != nullptr)
 			{
-				CreateObject<Attack>(objects[i]->GetLocation());       
-			};
-		};
+				CreateObject<Attack>(objects[i]->GetLocation());
+			}
+		}
 	
 	}
+	//地面に触れたら爆風
+
 
 }
 
