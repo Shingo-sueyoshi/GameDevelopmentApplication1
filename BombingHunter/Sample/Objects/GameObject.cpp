@@ -51,23 +51,33 @@ void GameObject::Finalize()
 {
 }
 
+//中身確認処理処理
+bool Hit_damage = FALSE;
+bool GameObject::Delete_Object()
+{
+	return this->Hit_damage;
+}
+
 //当たり判定通知処理
 void GameObject::OnHitCollision(GameObject* hit_object)
 {
 	//当たった時
 }
 
+//位置情報取得
 Vector2D GameObject::GetLocation() const
 {
 	return this->location;
 }
 
+//位置情報設定
 void GameObject::SetLocation(const Vector2D& location)
 {
 	this->location = location;
 
 }
 
+//ボックスサイズ取得
 Vector2D GameObject::GetBoxSize() const
 {
 	return box_size;

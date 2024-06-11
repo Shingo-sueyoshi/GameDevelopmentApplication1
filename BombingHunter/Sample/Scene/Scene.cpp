@@ -66,7 +66,14 @@ void Scene::Update()
 		}
 	
 	}
-	//’n–Ê‚ÉG‚ê‚½‚ç”š•—
+	//’n–Ê&“G‚ÉG‚ê‚½‚ç”š•—
+	for (int i = 0; i < objects.size(); i++)
+	{
+		if (objects[i]->Delete_Object() == TRUE)
+		{
+			this->objects.erase(objects.begin() + i); 
+		}
+	}
 
 
 }

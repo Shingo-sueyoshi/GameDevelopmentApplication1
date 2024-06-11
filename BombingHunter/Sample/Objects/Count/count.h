@@ -1,16 +1,14 @@
 #pragma once
 #include "../GameObject.h"
-class Enemy :public GameObject
+class Count :public GameObject
 {
 private:
-	int animation[9];		//アニメーション画像
-	int animation_count;	//アニメーション時間
-	Vector2D direction;			//進行方向
-
+	int count_image[10];		//時間画像
+	int count;				//時間
 
 public:
-	Enemy();
-	~Enemy();
+	Count();
+	~Count();
 
 	//初期化処理
 	virtual void Initialize() override;
@@ -21,15 +19,9 @@ public:
 	//終了時処理
 	virtual void Finalize() override;
 
-	//当たり判定通知処理
-	virtual void OnHitCollision(GameObject* hit_object) override;
-
 private:
-	//移動処理
-	void Movement();
-
 	//アニメーション制御
 	void AnimationControl();
-
 };
+
 

@@ -1,5 +1,4 @@
 #include "Attack.h"
-#include "Attack.h"
 #include "../../Utility/InputControl.h"
 #include "DxLib.h"
 
@@ -77,7 +76,19 @@ void Attack::Finalize()
 void Attack::OnHitCollision(GameObject* hit_object)
 {
 	//“–‚½‚Á‚½
-	
+	if (dynamic_cast<Attack*>(hit_object) != nullptr)
+	{
+		Hit_damage = FALSE;
+	}
+	else if (dynamic_cast<Attack*>(hit_object) != nullptr)
+	{
+		Hit_damage = FALSE;
+	}
+	else
+	{
+		Hit_damage = TRUE;
+	}
+
 }
 
 //ˆÚ“®ˆ—

@@ -7,7 +7,13 @@ Enemy::Enemy() :animation_count(0), direction(0.0f)
 {
 	animation[0] = NULL;
 	animation[1] = NULL;
-
+	animation[2] = NULL;
+	animation[3] = NULL;
+	animation[4] = NULL;
+	animation[5] = NULL;
+	animation[6] = NULL;
+	animation[7] = NULL;
+	animation[8] = NULL;
 }
 
 //デストラクタ
@@ -22,6 +28,14 @@ void Enemy::Initialize()
 	animation[0] = LoadGraph("Resource/Images/BoxEnemy/1.png");
 	animation[1] = LoadGraph("Resource/Images/BoxEnemy/2.png");
 
+	animation[2] = LoadGraph("Resource/Images/WingEnemy/1.png");
+	animation[3] = LoadGraph("Resource/Images/WingEnemy/2.png");
+
+	animation[4] = LoadGraph("Resource/Images/GoldEnemy/1.png");
+	animation[5] = LoadGraph("Resource/Images/GoldEnemy/2.png");
+	animation[6] = LoadGraph("Resource/Images/GoldEnemy/3.png");
+	animation[7] = LoadGraph("Resource/Images/GoldEnemy/4.png");
+	animation[8] = LoadGraph("Resource/Images/GoldEnemy/5.png");
 	//エラーチェック
 	if (animation[0] == -1 || animation[1] == -1)
 	{
@@ -81,6 +95,13 @@ void Enemy::Finalize()
 	//使用した画像を解放
 	DeleteGraph(animation[0]);
 	DeleteGraph(animation[1]);
+	DeleteGraph(animation[2]);
+	DeleteGraph(animation[3]);
+	DeleteGraph(animation[4]);
+	DeleteGraph(animation[5]);
+	DeleteGraph(animation[6]);
+	DeleteGraph(animation[7]);
+	DeleteGraph(animation[8]);
 
 }
 
