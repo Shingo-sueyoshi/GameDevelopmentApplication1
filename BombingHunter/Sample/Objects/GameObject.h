@@ -13,7 +13,7 @@ protected:
 	double radian;			//Œü‚«
 	int image;				//•`‰æ‚·‚é‰æ‘œ
 	int sound;				//Ä¶‚·‚é‰¹Œ¹
-	bool Hit_damage;		//“–‚½‚è’Ê’m
+	bool Hit_damage;		//“–‚½‚è’Ê’m•Ï”
 
 public:
 

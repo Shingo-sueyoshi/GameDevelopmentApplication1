@@ -1,5 +1,6 @@
 #include "Player.h"
 #include "../../Utility/InputControl.h"
+#include "../../Objects/Enemy/Enemy.h"
 #include "DxLib.h"
 
 //コンストラクタ
@@ -83,6 +84,11 @@ void Player::Finalize()
 void Player::OnHitCollision(GameObject* hit_object)
 {
 	//当たった時
+	if (dynamic_cast<Enemy*>(hit_object) != nullptr)
+	{
+		radian = 3.0f;
+		location = 0.0f;
+	}
 }
 
 //移動処理

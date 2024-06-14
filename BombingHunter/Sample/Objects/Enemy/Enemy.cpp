@@ -1,6 +1,8 @@
 #include "Enemy.h"
 #include "../../Utility/InputControl.h"
 #include "DxLib.h"
+#include "../../Objects/Player/Player.h"
+#include "../../Objects/Attack/Attack.h"
 
 //コンストラクタ
 Enemy::Enemy() :animation_count(0), direction(0.0f)
@@ -52,7 +54,7 @@ void Enemy::Initialize()
 	image = animation[0];
 
 	//初期進行方向設定
-	direction = Vector2D(1.0f, -0.5f);
+	direction = Vector2D(1.0f, 0.0f);
 }
 
 //更新処理
@@ -109,7 +111,18 @@ void Enemy::Finalize()
 void Enemy::OnHitCollision(GameObject* hit_object)
 {
 	//当たった時
-	direction = 0.0f;
+	
+		if (dynamic_cast<Player*>(hit_object) != nullptr)
+		{
+			direction =1.0f,-0.5f;
+		}
+
+		if (dynamic_cast<Attack*>(hit_object) != nullptr)
+		{
+			direction = 0.0f;
+		}
+	
+	
 }
 
 //移動処理

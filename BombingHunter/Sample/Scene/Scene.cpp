@@ -52,7 +52,7 @@ void Scene::Update()
 	//Zキーを押したら、敵を生成
 	if (InputControl::GetKeyDown(KEY_INPUT_Z))
 	{
-		CreateObject<Enemy>(Vector2D(100.0f, 400.0f));
+		CreateObject<Enemy>(Vector2D(100.0f, 500.0f));
 	}
 	//SPACEキーを押したら、爆弾を生成
 	if (InputControl::GetKeyDown(KEY_INPUT_SPACE))
@@ -66,12 +66,15 @@ void Scene::Update()
 		}
 	
 	}
+
+
+
 	//地面&敵に触れたら爆風
 	for (int i = 0; i < objects.size(); i++)
 	{
 		if (objects[i]->Delete_Object() == TRUE)
 		{
-			this->objects.erase(objects.begin() + i); 
+		//	this->objects.erase(objects.begin() + i); 
 		}
 	}
 
