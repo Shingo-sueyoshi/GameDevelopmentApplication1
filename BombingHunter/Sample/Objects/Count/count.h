@@ -1,5 +1,7 @@
 #pragma once
 #include "../GameObject.h"
+#define TIME_LIMIT (3000*3)
+
 class Count :public GameObject
 {
 private:

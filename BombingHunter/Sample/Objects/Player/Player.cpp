@@ -87,7 +87,7 @@ void Player::OnHitCollision(GameObject* hit_object)
 	if (dynamic_cast<Enemy*>(hit_object) != nullptr)
 	{
 		radian = 3.0f;
-		location = 0.0f;
+		location = 350;
 	}
 }
 

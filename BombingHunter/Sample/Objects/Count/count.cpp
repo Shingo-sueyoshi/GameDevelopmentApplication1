@@ -25,6 +25,8 @@ Count::~Count()
 //初期化処理
 void Count::Initialize()
 {
+	count = TIME_LIMIT;
+
 	count_image[0] = LoadGraph("Resource/Images/Score/0.ping");
 	count_image[1] = LoadGraph("Resource/Images/Score/1.ping");
 	count_image[2] = LoadGraph("Resource/Images/Score/2.ping");
@@ -37,17 +39,17 @@ void Count::Initialize()
 	count_image[9] = LoadGraph("Resource/Images/Score/9.ping");
 	
 	
-	//エラーチェック
-	int i = NULL;
+	////エラーチェック
+	//int i = NULL;
 
-	if (count_image[i] == -1)
-	{
-		for (i = 0; i < 10; i++)
-		{
-		throw("時間の画像がありません\n");
-		}
+	//if (count_image[i] == -1)
+	//{
+	//	for (i = 0; i < 10; i++)
+	//	{
+	//	throw("時間の画像がありません\n");
+	//	}
 
-	}
+	//}
 
 	
 
@@ -57,15 +59,21 @@ void Count::Initialize()
 //更新処理
 void Count::Update()
 {
+	//
+	count--;
+	
 	//アニメーション制御
 	AnimationControl();
+
+
 }
 
 //描画処理
 void Count::Draw() const
 {
 	//タイム画像の描画
-	DrawRotaGraphF(900, 100, 0.8, radian, image, TRUE);
+
+	DrawExtendGraph(100, 100, 150, 150, count_image[count / 150], FALSE);
 }
 
 //終了時処理

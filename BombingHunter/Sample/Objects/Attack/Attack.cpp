@@ -95,7 +95,7 @@ void Attack::OnHitCollision(GameObject* hit_object)
 void Attack::Movement()
 {
 	//現在の位置座標に速さを加算
-	location += direction;
+	location += direction; 
 }
 
 //アニメーション制御

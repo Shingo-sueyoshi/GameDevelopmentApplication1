@@ -2,6 +2,7 @@
 #include "../Objects/Player/Player.h"
 #include "../Objects/Enemy/Enemy.h"
 #include"../Objects/Attack/Attack.h"
+#include "../Objects/Count/count.h"
 #include "../Utility/InputControl.h"
 #include "DXLib.h"
 
@@ -12,7 +13,7 @@ Scene::Scene():objects()
 
 Scene::~Scene()
 {
-	//–Y‚ê–h~
+	//–Y‚ê–h~ 
 	Finalize();
 }
 
@@ -29,6 +30,10 @@ void Scene::Initialize()
 
 	//ƒvƒŒƒCƒ„[‚ğ¶¬‚·‚é
 	CreateObject<Player>(Vector2D(320.0f, 240.0f));
+	
+	CreateObject<Count>(Vector2D(100.0f,100.0f));
+
+
 }
 
 void Scene::Update()
@@ -74,7 +79,7 @@ void Scene::Update()
 	{
 		if (objects[i]->Delete_Object() == TRUE)
 		{
-		//	this->objects.erase(objects.begin() + i); 
+			//this->objects.erase(objects.begin() + i);
 		}
 	}
 
@@ -84,8 +89,6 @@ void Scene::Update()
 void Scene::Draw() const
 {
 	//”wŒi‰æ‘œ‚ğ•`‰æ‚·‚é
-	DrawGraph(0, 0, back_ground, FALSE);
-
 	//‰æ‘œ‚Ìk¬
 	DrawExtendGraph(0, 0, 1000, 600, back_ground, FALSE);
 
