@@ -8,7 +8,8 @@ GameObject::GameObject() :
 	radian(0.0),
 	image(0.0),
 	sound(0.0),
-	Hit_damage(NULL)
+	hit_damage(false),
+	ani (false)
 {
 }
 
@@ -20,8 +21,8 @@ GameObject::~GameObject()
 //初期化処理
 void GameObject::Initialize()
 {
-	bool Hit_damage = FALSE;
-
+	hit_damage = false;
+	ani = false;
 }
 
 //更新処理
@@ -57,7 +58,12 @@ void GameObject::Finalize()
 //中身確認処理処理
 bool GameObject::Delete_Object()
 {
-	return this->Hit_damage;
+	return this->hit_damage;
+}
+
+bool GameObject::Animation_Object()
+{
+	return this->ani;
 }
 
 //当たり判定通知処理

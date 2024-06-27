@@ -3,6 +3,9 @@
 #include "../Utility/Vector2D.h"
 
 #define D_PIVOT_CENTER		//マクロ定義
+#define PLAYER		(1)		//
+#define ENEMY		(2)		//
+#define ATTACK		(3)		//
 
 //オブジェクトの親クラス（基底クラス）
 class GameObject
@@ -13,7 +16,11 @@ protected:
 	double radian;			//向き
 	int image;				//描画する画像
 	int sound;				//再生する音源
-	bool Hit_damage;		//当たり通知変数
+	bool hit_damage;		//当たり通知変数
+	bool ani;
+
+public:
+	int objecttype;			//キャラ箱
 
 public:
 
@@ -28,6 +35,7 @@ public:
 	virtual void Draw() const;			//描画処理
 	virtual void Finalize();			//終了時処理
 	bool Delete_Object();				//当たり通知処理
+	bool Animation_Object();				//当たり通知処理
 
 public:
 	virtual void OnHitCollision(GameObject* hit_object);		//当たり判定通知処理

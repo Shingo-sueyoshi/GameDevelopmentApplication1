@@ -20,6 +20,8 @@ Player::~Player()
 //‰Šú‰»ˆ—
 void Player::Initialize()
 {
+	objecttype = PLAYER;
+
 	//‰æ‘œ“Ç‚İ
 	animation[0] = LoadGraph("Resource/Images/Tri-pilot/1.png");
 	animation[1] = LoadGraph("Resource/Images/Tri-pilot/2.png");

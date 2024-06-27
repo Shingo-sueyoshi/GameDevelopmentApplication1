@@ -3,7 +3,7 @@
 class Attack :public GameObject
 {
 private:
-	int animation[2];		//アニメーション画像
+	int animation[4];		//アニメーション画像
 	int animation_count;	//アニメーション時間
 	Vector2D direction;			//進行方向
 
@@ -28,6 +28,7 @@ private:
 	//移動処理
 	void Movement();
 
+public:
 	//アニメーション制御
 	void AnimationControl();
 };

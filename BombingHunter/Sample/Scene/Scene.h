@@ -3,11 +3,21 @@
 #include<vector>
 #include"../Objects/GameObject.h"
 
+//マクロ定義
+#define TIME_LIMIT (3000*3)
+
 class Scene
 {
 private:
-	int back_ground;
+	class Player* p;
 	std::vector<GameObject*>objects;		//オブジェクトリスト
+
+	//画像変数
+	int back_ground;
+
+	int time_image;				//時間画像
+	int count_image[10];		//数字画像
+	int count;				//時間
 
 public:
 	Scene();

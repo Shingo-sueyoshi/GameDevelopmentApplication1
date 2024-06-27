@@ -1,8 +1,7 @@
 #include "Enemy.h"
 #include "../../Utility/InputControl.h"
 #include "DxLib.h"
-#include "../../Objects/Player/Player.h"
-#include "../../Objects/Attack/Attack.h"
+
 
 //コンストラクタ
 Enemy::Enemy() :animation_count(0), direction(0.0f)
@@ -26,6 +25,8 @@ Enemy::~Enemy()
 //初期化処理
 void Enemy::Initialize()
 {
+	objecttype = ENEMY;
+
 	//画像読込み
 	animation[0] = LoadGraph("Resource/Images/BoxEnemy/1.png");
 	animation[1] = LoadGraph("Resource/Images/BoxEnemy/2.png");
@@ -110,19 +111,11 @@ void Enemy::Finalize()
 //当たり判定通知処理
 void Enemy::OnHitCollision(GameObject* hit_object)
 {
-	//当たった時
-	
-		if (dynamic_cast<Player*>(hit_object) != nullptr)
+		//当たった時
+		if (hit_object->objecttype == ATTACK)
 		{
-			direction =1.0f,-0.5f;
+			hit_damage = TRUE;
 		}
-
-		if (dynamic_cast<Attack*>(hit_object) != nullptr)
-		{
-			direction = 0.0f;
-		}
-	
-	
 }
 
 //移動処理
