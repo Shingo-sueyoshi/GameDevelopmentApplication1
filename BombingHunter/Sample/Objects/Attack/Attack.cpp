@@ -55,6 +55,12 @@ void Attack::Update()
 	//移動処理
 	Movement();
 
+	if (location.y >= 450)
+	{
+		direction = 0.0f;
+		ani = TRUE;  
+	}
+
 	//アニメーション制御
 	AnimationControl();
 }
@@ -86,19 +92,22 @@ void Attack::Finalize()
 void Attack::OnHitCollision(GameObject* hit_object)
 {
 
-	//当たった時
-		if (hit_object->objecttype == ENEMY)
+	//当たった時&地面に触れていたら爆発
+		if (hit_object->objecttype == ENEMY )
 		{
+			direction = 0.0f;
 			ani = TRUE;
 		}
-	
+		
+		
 }
 
 //移動処理
 void Attack::Movement()
 {
 	//現在の位置座標に速さを加算
-	location += direction; 
+	location += direction;
+	
 }
 
 //アニメーション制御
