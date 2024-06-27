@@ -55,6 +55,7 @@ void Attack::Update()
 	//ˆÚ“®ˆ—
 	Movement();
 
+	//’n–Ê‚ÉG‚ê‚½‚ç”š•—
 	if (location.y >= 450)
 	{
 		direction = 0.0f;
@@ -92,7 +93,7 @@ void Attack::Finalize()
 void Attack::OnHitCollision(GameObject* hit_object)
 {
 
-	//“–‚½‚Á‚½Žž&’n–Ê‚ÉG‚ê‚Ä‚¢‚½‚ç”š”­
+	//“–‚½‚Á‚½ŽžŽ~‚Ü‚Á‚Ä”š”­
 		if (hit_object->objecttype == ENEMY )
 		{
 			direction = 0.0f;
