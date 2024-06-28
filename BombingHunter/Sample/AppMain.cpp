@@ -32,7 +32,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance,
 		scene->Initialize();
 
 		//メインループ(ウィンドウの異常発生 or ESCキーが押されたら、ループを終了）
-		while (ProcessMessage() != -1 && CheckHitKey(KEY_INPUT_ESCAPE) != TRUE)
+		while (ProcessMessage() != -1 && CheckHitKey(KEY_INPUT_ESCAPE) != TRUE )
 		{
 			//入力機能更新
 			InputControl::Update();

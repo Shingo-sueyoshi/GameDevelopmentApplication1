@@ -23,6 +23,8 @@ void GameObject::Initialize()
 {
 	hit_damage = false;
 	ani = false;
+	set_loc = false;
+
 }
 
 //更新処理
@@ -55,15 +57,25 @@ void GameObject::Finalize()
 {
 }
 
-//中身確認処理処理
+
+
+//通知処理
+//ダメージ通知
 bool GameObject::Delete_Object()
 {
 	return this->hit_damage;
 }
 
+//アニメーション通知
 bool GameObject::Animation_Object()
 {
 	return this->ani;
+}
+
+//スコア通知
+int GameObject::GetScore()
+{
+	return this->score;
 }
 
 //当たり判定通知処理

@@ -15,9 +15,16 @@ private:
 	//画像変数
 	int back_ground;
 
+	int total_score;			//スコア合計
+	int score_image;			//スコア画像
+
 	int time_image;				//時間画像
 	int count_image[10];		//数字画像
 	int count;				//時間
+
+
+	int f_count;
+	int R_Enemy;
 
 public:
 	Scene();

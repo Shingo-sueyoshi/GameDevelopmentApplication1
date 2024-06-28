@@ -1,10 +1,15 @@
 #pragma once
 #include "../GameObject.h"
+
+#define LINE_0  (470)
+
 class Enemy :public GameObject
 {
 private:
 	int animation[9];		//アニメーション画像
 	int animation_count;	//アニメーション時間
+
+public:
 	Vector2D direction;			//進行方向
 
 
@@ -23,6 +28,9 @@ public:
 
 	//当たり判定通知処理
 	virtual void OnHitCollision(GameObject* hit_object) override;
+
+	//方向処理
+	void Way();
 
 private:
 	//移動処理

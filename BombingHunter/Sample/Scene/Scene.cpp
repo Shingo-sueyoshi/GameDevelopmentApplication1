@@ -31,6 +31,7 @@ void Scene::Initialize()
 	//画像読込み
 	back_ground = LoadGraph("Resource/images/BackGround.png");
 	time_image = LoadGraph("Resource/images/TimeLimit/timer-03.png");
+	score_image = LoadGraph("Resource/images/Score/font-21.png");
 
 	count = TIME_LIMIT;
 	count_image[0] = LoadGraph("Resource/Images/Score/0.png");
@@ -63,6 +64,8 @@ void Scene::Initialize()
 	p = CreateObject<Player>(Vector2D(320.0f, 240.0f));
 
 
+
+
 }
 
 void Scene::Update()
@@ -88,11 +91,38 @@ void Scene::Update()
 		}
 	}
 
-	//Zキーを押したら、敵を生成
-	if (InputControl::GetKeyDown(KEY_INPUT_Z))
+	////ランダムで、敵を生成
+
+	f_count++;
+
+	if (f_count>=120)
 	{
-		CreateObject<Enemy>(Vector2D(100.0f, 460.0f));
+		//
+		R_Enemy = GetRand(5);
+
+
+		if (R_Enemy == 0)
+		{
+			Enemy* n = CreateObject<Enemy>(Vector2D(0.0f, LINE_0));			///もう少しセットロケーションが無駄になってる
+			n->Way();
+		}
+		/*else if (R_Enemy == 1)
+		{
+			CreateObject<Enemy>(Vector2D(0.0f, LINE_0));
+		}
+		else if (R_Enemy == 2)
+		{
+			CreateObject<Enemy>(Vector2D(0.0f, LINE_0));
+		}
+		else if (R_Enemy == 3)
+		{
+			CreateObject<Enemy>(Vector2D(0.0f, LINE_0));
+		}*/
+		
+		f_count = 0;
+
 	}
+
 	//SPACEキーを押したら、爆弾を生成
 	if (InputControl::GetKeyDown(KEY_INPUT_SPACE))
 	{
@@ -100,11 +130,13 @@ void Scene::Update()
 	
 	}
 
-	//地面&敵に触れたら削除
+	//敵に触れたら削除
 	for (int i = 0; i < objects.size(); i++)
 	{
 		if (objects[i]->Delete_Object()  == TRUE)
 		{
+			total_score += objects[i]->GetScore();
+
 			this->objects.erase(objects.begin() + i);
 		}
 		
@@ -123,6 +155,17 @@ void Scene::Draw() const
 	DrawExtendGraph(0, 510, 60, 550, time_image, TRUE);
 	DrawExtendGraph(50, 510, 110, 550, count_image[count / 150 / 10], TRUE);
 	DrawExtendGraph(100, 510, 160, 550, count_image[count / 150 % 10], TRUE);
+
+	//スコア描画
+	DrawExtendGraph(200, 510, 400, 550, score_image, TRUE);
+
+	
+	DrawExtendGraph(450, 510, 470, 550, count_image[/*total_score / 10000*/0], TRUE);
+	DrawExtendGraph(470, 510, 490, 550, count_image[/*total_score % 10*/0], TRUE);
+	DrawExtendGraph(490, 510, 510, 550, count_image[/*total_score % 100*/0], TRUE);
+	DrawExtendGraph(510, 510, 530, 550, count_image[/*total_score % 1000*/0], TRUE);
+	DrawExtendGraph(530, 510, 550, 550, count_image[/*total_score % 10000*/0], TRUE);
+
 
 	//シーンに存在するオブジェクトの描画処理
 	for (GameObject* obj : objects)
