@@ -1,16 +1,21 @@
 #pragma once
 #include "../GameObject.h"
-class Enemy :public GameObject
+
+#define LINE_0  (470)
+
+class BoxEnemy :public GameObject
 {
 private:
-	int animation[2];		//アニメーション画像
+	int animation[9];		//アニメーション画像
 	int animation_count;	//アニメーション時間
-	int flip_flag;			//反転フラグ
-	
 
 public:
-	Enemy();
-	~Enemy();
+	Vector2D direction;			//進行方向
+
+
+public:
+	BoxEnemy();
+	~BoxEnemy();
 
 	//初期化処理
 	virtual void Initialize() override;
@@ -22,11 +27,14 @@ public:
 	virtual void Finalize() override;
 
 	//当たり判定通知処理
-	virtual void OnHitCollision(GameObject*hit_object) override;
+	virtual void OnHitCollision(GameObject* hit_object) override;
+
+	//方向処理
+	void Way();
 
 private:
-	/*移動処理
-	void Movement();*/
+	//移動処理
+	void Movement();
 
 	//アニメーション制御
 	void AnimationControl();
