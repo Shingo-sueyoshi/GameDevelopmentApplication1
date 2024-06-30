@@ -21,7 +21,9 @@ private:
 	int time_image;				//時間画像
 	int count_image[10];		//数字画像
 	int count;				//時間
-
+	int result_count;
+	int result_image[5];
+	int image;
 
 	int f_count;
 	int R_Enemy;
@@ -34,6 +36,8 @@ public:
 	void Update();
 	void Draw() const;
 	void Finalize();
+
+	void ResultScene();
 
 private:
 	//当たり判定チェック処理

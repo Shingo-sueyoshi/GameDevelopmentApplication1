@@ -59,7 +59,7 @@ void Attack::Update()
 	if (location.y >= 450)
 	{
 		direction = 0.0f;
-		ani = TRUE;  
+		ani2 = TRUE;  
 	}
 
 	//アニメーション制御
@@ -143,6 +143,42 @@ void Attack::AnimationControl()
 			else 
 			{
 				hit_damage = TRUE;
+			}
+
+		}
+
+	}
+
+
+	if (ani2 == TRUE)
+	{
+		//アニメーションカウントを加算
+		animation_count++;
+
+		//30フレームに達したら
+		if (animation_count >= 8)
+		{
+			//カウントリセット
+			animation_count = 0;
+
+			//画像の切り替え
+			if (image == animation[0])
+			{
+				//向きの設定
+				radian = 0.0f;
+				image = animation[1];
+			}
+			else if (image == animation[1])
+			{
+				image = animation[2];
+			}
+			else if (image == animation[2])
+			{
+				image = animation[3];
+			}
+			else
+			{
+				screen_damage = TRUE;
 			}
 
 		}

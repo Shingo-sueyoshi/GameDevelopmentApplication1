@@ -1,10 +1,10 @@
-#include "Enemy.h"
+#include "BoxEnemy.h"
 #include "../../Utility/InputControl.h"
 #include "DxLib.h"
 
 
 //コンストラクタ
-Enemy::Enemy() :animation_count(0)
+BoxEnemy::BoxEnemy() :animation_count(0)
 {
 	animation[0] = NULL;
 	animation[1] = NULL;
@@ -12,18 +12,18 @@ Enemy::Enemy() :animation_count(0)
 }
 
 //デストラクタ
-Enemy::~Enemy()
+BoxEnemy::~BoxEnemy()
 {
 }
 
 //初期化処理
-void Enemy::Initialize()
+void BoxEnemy::Initialize()
 {
 	objecttype = ENEMY;
 
 	//画像読込み
-	animation[0] = /*/NULL;*/LoadGraph("Resource/Images/BoxEnemy/1.png");
-	animation[1] = /*/NULL;*/LoadGraph("Resource/Images/BoxEnemy/2.png");
+	animation[0] = LoadGraph("Resource/Images/BoxEnemy/1.png");
+	animation[1] = LoadGraph("Resource/Images/BoxEnemy/2.png");
 
 	
 	//エラーチェック
@@ -65,7 +65,7 @@ void Enemy::Initialize()
 }
 
 //更新処理
-void Enemy::Update()
+void BoxEnemy::Update()
 {
 	//移動処理
 	Movement();
@@ -75,7 +75,7 @@ void Enemy::Update()
 }
 
 //描画処理
-void Enemy::Draw() const
+void BoxEnemy::Draw() const
 {
 	//画像反転フラグ
 	int flip_flag = FALSE;
@@ -100,7 +100,7 @@ void Enemy::Draw() const
 
 
 //終了時処理
-void Enemy::Finalize()
+void BoxEnemy::Finalize()
 {
 	//使用した画像を解放
 	DeleteGraph(animation[0]);
@@ -110,17 +110,19 @@ void Enemy::Finalize()
 }
 
 //当たり判定通知処理
-void Enemy::OnHitCollision(GameObject* hit_object)
+void BoxEnemy::OnHitCollision(GameObject* hit_object)
 {
 		//当たった時
 		if (hit_object->objecttype == ATTACK)
 		{
+			score = 50;
+
 			hit_damage = TRUE;
 		}
 }
 
 //方向処理
-void Enemy::Way()
+void BoxEnemy::Way()
 {
 
 	//
@@ -145,13 +147,13 @@ void Enemy::Way()
 }
 
 //移動処理
-void Enemy::Movement()
+void BoxEnemy::Movement()
 {
 	//画面端に到達したら、
 	if (((location.x + direction.x) < box_size.x) ||
 		(1150.0f - box_size.x) < (location.x + direction.x))
 	{
-		hit_damage = TRUE;
+		screen_damage = TRUE;
 	}
 	
 
@@ -160,7 +162,7 @@ void Enemy::Movement()
 }
 
 //アニメーション制御
-void Enemy::AnimationControl()
+void BoxEnemy::AnimationControl()
 {
 
 	//アニメーションカウントを加算

@@ -66,10 +66,22 @@ bool GameObject::Delete_Object()
 	return this->hit_damage;
 }
 
+//ダメージ通知
+bool GameObject::Delete_Screen()
+{
+	return this->screen_damage;
+}
+
+
 //アニメーション通知
 bool GameObject::Animation_Object()
 {
 	return this->ani;
+}
+
+bool GameObject::Animation_Object2()
+{
+	return this->ani2;
 }
 
 //スコア通知

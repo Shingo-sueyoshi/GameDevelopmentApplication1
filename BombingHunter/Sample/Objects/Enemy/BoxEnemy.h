@@ -3,7 +3,7 @@
 
 #define LINE_0  (470)
 
-class Enemy :public GameObject
+class BoxEnemy :public GameObject
 {
 private:
 	int animation[9];		//アニメーション画像
@@ -14,8 +14,8 @@ public:
 
 
 public:
-	Enemy();
-	~Enemy();
+	BoxEnemy();
+	~BoxEnemy();
 
 	//初期化処理
 	virtual void Initialize() override;

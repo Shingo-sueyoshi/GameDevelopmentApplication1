@@ -20,7 +20,9 @@ protected:
 	int score;				//スコア
 
 	bool hit_damage;		//当たり通知変数
+	bool screen_damage;
 	bool ani;
+	bool ani2;
 	bool set_loc;
 
 public:
@@ -42,7 +44,9 @@ public:
 	int GetScore();					//スコア取得処理
 
 	bool Delete_Object();				//当たり通知処理
+	bool Delete_Screen();
 	bool Animation_Object();				//当たり通知処理
+	bool Animation_Object2();
 	
 
 

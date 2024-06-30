@@ -136,8 +136,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AppMain.cpp" />
+    <ClCompile Include="Objects\Harpy\Harpy.cpp" />
+    <ClCompile Include="Objects\Enemy\GoldEnemy.cpp" />
+    <ClCompile Include="Objects\Enemy\WingEnemy.cpp" />
     <ClCompile Include="Objects\Attack\Attack.cpp" />
-    <ClCompile Include="Objects\Enemy\Enemy.cpp" />
+    <ClCompile Include="Objects\Enemy\BoxEnemy.cpp" />
     <ClCompile Include="Objects\GameObject.cpp" />
     <ClCompile Include="Objects\Player\Player.cpp" />
     <ClCompile Include="Scene\Scene.cpp" />
@@ -145,8 +148,11 @@
     <ClCompile Include="Utility\Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Objects\Harpy\Harpy.h" />
+    <ClInclude Include="Objects\Enemy\GoldEnemy.h" />
+    <ClInclude Include="Objects\Enemy\WingEnemy.h" />
     <ClInclude Include="Objects\Attack\Attack.h" />
-    <ClInclude Include="Objects\Enemy\Enemy.h" />
+    <ClInclude Include="Objects\Enemy\BoxEnemy.h" />
     <ClInclude Include="Objects\GameObject.h" />
     <ClInclude Include="Objects\Player\Player.h" />
     <ClInclude Include="Scene\Scene.h" />
