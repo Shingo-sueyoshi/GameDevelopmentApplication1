@@ -154,7 +154,7 @@ public:
 	virtual void Finalize()
 	{
 		// オブジェクトリスト内のオブジェクトを破棄する
-		DestoryAllObject();
+		DestroyAllObject();
 
 		// 動的配列の解放
 		if(!create_list.empty())
@@ -255,7 +255,7 @@ private:
 	/// <summary>
 	/// シーン内オブジェクト破棄処理
 	/// </summary>
-	void DestoryAllObject()
+	void DestroyAllObject()
 	{
 		// オブジェクトリストが空なら処理を終了する
 		if(object_list.empty())
