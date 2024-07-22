@@ -13,7 +13,7 @@ enum eEnemyState
 
 
 /// <summary>
-/// エネミークラス（アカベエ）
+/// エネミークラス
 /// </summary>
 class EnemyBase : public GameObject
 {
@@ -28,7 +28,19 @@ private:
 	};
 protected:
 
+private:
+	std::vector<int> move_animation;
+	std::vector<int> dying_animation;
+	Vector2D velocity;
+	eEnemyState Enemy_state;
+	eDirectionState now_direction_state;
+	eDirectionState next_direction_state;
+	
+
 public:
 	EnemyBase();
 	virtual ~EnemyBase();
+
+	virtual void Initialize() override;
+	virtual
 };
