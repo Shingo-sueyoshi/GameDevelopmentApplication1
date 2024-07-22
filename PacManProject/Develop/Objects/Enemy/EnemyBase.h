@@ -8,7 +8,7 @@ enum eEnemyState
 {
 	IDLE,		//待機状態
 	MOVE,		//移動状態
-	DIE,		//死亡状態
+	DIE,		//イジケ状態
 };
 
 
@@ -32,7 +32,7 @@ private:
 	std::vector<int> move_animation;
 	std::vector<int> dying_animation;
 	Vector2D velocity;
-	eEnemyState Enemy_state;
+	eEnemyState enemy_state;
 	eDirectionState now_direction_state;
 	eDirectionState next_direction_state;
 	
@@ -42,5 +42,21 @@ public:
 	virtual ~EnemyBase();
 
 	virtual void Initialize() override;
-	virtual
+	virtual void Update(float delta_second) override;
+	virtual void Draw(const Vector2D& screen_offset) const override;
+	virtual void Finalize() override;
+
+	/// <summary>
+	/// 当たり判定通知処理
+	/// </summary>
+	/// <param name="hit_object">当たったゲームオブジェクトのポインタ</param>
+	virtual void OnHitCollision(GameObjectBase* hit_object) override;
+
+	/// <summary>
+	/// プレイヤーの状態を取得する
+	/// </summary>
+	/// <returns>プレイヤーの状態</returns>
+	eEnemyState GetEnemyState() const;
+
+
 };
