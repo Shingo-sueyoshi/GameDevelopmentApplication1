@@ -1,5 +1,4 @@
 #include "EnemyBase.h"
-#include "../../Utility/InputManager.h"
 #include "../../Utility/ResourceManager.h"
 #include "DxLib.h"
 
