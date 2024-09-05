@@ -121,7 +121,7 @@ void BoxEnemy::OnHitCollision(GameObject* hit_object)
 		}
 }
 
-//•ûŒüˆ—
+//¶‰E•ûŒüˆ—
 void BoxEnemy::Way()
 {
 

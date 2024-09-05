@@ -38,7 +38,7 @@ void Player::Initialize()
 	// 当たり判定の設定
 	collision.is_blocking = true;
 	collision.object_type = eObjectType::player;
-	collision.hit_object_type.push_back(eObjectType::enemy);
+  	collision.hit_object_type.push_back(eObjectType::enemy);
 	collision.hit_object_type.push_back(eObjectType::wall);
 	collision.hit_object_type.push_back(eObjectType::food);
 	collision.hit_object_type.push_back(eObjectType::power_food);
@@ -321,16 +321,16 @@ void Player::Movement(float delta_second)
 	switch(now_direction_state)
 	{
 		case Player::UP:
-			velocity.y = -1.0f;
+			velocity.y = -2.5f;
 			break;
 		case Player::DOWN:
-			velocity.y = 1.0f;
+			velocity.y = 2.5f;
 			break;
 		case Player::LEFT:
-			velocity.x = -1.0f;
+			velocity.x = -2.5f;
 			break;
 		case Player::RIGHT:
-			velocity.x = 1.0f;
+			velocity.x = 2.5f;
 			break;
 		default:
 			velocity = 0.0f;
@@ -346,16 +346,16 @@ void Player::Movement(float delta_second)
 		switch(next_direction_state)
 		{
 			case Player::UP:
-				velocity.y = -1.0f;
+				velocity.y = -2.5f;
 				break;
 			case Player::RIGHT:
-				velocity.x = 1.0f;
+				velocity.x = 2.5f;
 				break;
 			case Player::DOWN:
-				velocity.y = 1.0f;
+				velocity.y = 2.5f;
 				break;
 			case Player::LEFT:
-				velocity.x = -1.0f;
+				velocity.x = -2.5f;
 				break;
 			default:
 				break;

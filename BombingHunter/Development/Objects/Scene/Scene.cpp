@@ -241,7 +241,6 @@ void Scene::Draw() const
 	//スコア描画
 	DrawExtendGraph(200, 510, 400, 550, score_image, TRUE);
 
-	//リザルト描画
 	DrawExtendGraph(450, 510, 470, 550, count_image[total_score / 1000], TRUE);
 	DrawExtendGraph(470, 510, 490, 550, count_image[(total_score % 1000)/100 ], TRUE);
 	DrawExtendGraph(490, 510, 510, 550, count_image[(total_score % 1000 %100) /10   ], TRUE);

@@ -1,6 +1,6 @@
 ﻿#include "InGameScene.h"
 #include "../../Objects/Player/Player.h"
-#include "../../Objects/Enemy/EnemyBase.h"
+#include "../../Objects/Enemy/RedEnemy/RedEnemy.h"
 #include "../../Objects/Wall/Wall.h"
 #include "../../Objects/Food/Food.h"
 #include "../../Objects/Food/PowerFood.h"
@@ -11,6 +11,7 @@
 
 InGameScene::InGameScene() 
 	: player(nullptr)
+	, red_enemy(nullptr)
 	, back_ground_image(NULL)
 	, back_ground_sound(NULL)
 	, pause_flag(false)
@@ -65,6 +66,11 @@ eSceneType InGameScene::Update(const float& delta_second)
 		if (player->GetDestroy())
 		{
 			return eSceneType::re_start;
+		}
+
+		if (player->GetPowerUp() == true)
+		{
+			red_enemy->SetEnemyState();
 		}
 	}
 
@@ -185,9 +191,21 @@ void InGameScene::LoadStageMapCSV()
 				player = CreateObject<Player>(generate_location);
 				break;
 			// エネミー
-			case 'E':
+			case 'R':
+				generate_location = (Vector2D((float)(spos_x - 1), (float)(spos_y - 1)) * D_OBJECT_SIZE) + (D_OBJECT_SIZE / 2.0f);
+				red_enemy = CreateObject<RedEnemy>(generate_location);
+				break;
+			/*case 'M':
 				generate_location = (Vector2D((float)(spos_x - 1), (float)(spos_y - 1)) * D_OBJECT_SIZE) + (D_OBJECT_SIZE / 2.0f);
 				CreateObject<EnemyBase>(generate_location);
+				break;
+			case 'B':
+				generate_location = (Vector2D((float)(spos_x - 1), (float)(spos_y - 1)) * D_OBJECT_SIZE) + (D_OBJECT_SIZE / 2.0f);
+				CreateObject<EnemyBase>(generate_location);
+				break;
+			case 'Y':
+				generate_location = (Vector2D((float)(spos_x - 1), (float)(spos_y - 1)) * D_OBJECT_SIZE) + (D_OBJECT_SIZE / 2.0f);
+				CreateObject<EnemyBase>(generate_location);*/
 				break;
 			// 上記以外
 			default:

@@ -1,53 +1,59 @@
-ï»¿#pragma once
+#pragma once
 
 #include "../GameObject.h"
 #include "../../Utility/StageData.h"
 
-//ã‚¨ãƒãƒŸãƒ¼çŠ¶æ…‹
+// ƒvƒŒƒCƒ„[ó‘Ô
 enum eEnemyState
 {
-	ENEMY_IDLE,		//å¾…æ©ŸçŠ¶æ…‹
-	ENEMY_MOVE,		//ç§»å‹•çŠ¶æ…‹
-	ENEMY_DIE,		//ã‚¤ã‚¸ã‚±çŠ¶æ…‹
+	ENEMY_IDLE,		// ‘Ò‹@ó‘Ô
+	ENEMY_MOVE,		// ˆÚ“®ó‘Ô
+	ENEMY_IZIKE,		// ƒCƒWƒPó‘Ô
+	ENEMY_DIE,		// €–Só‘Ô
 };
 
-
 /// <summary>
-/// ã‚¨ãƒãƒŸãƒ¼ã‚¯ãƒ©ã‚¹
+/// ƒGƒlƒ~[ƒNƒ‰ƒXiƒpƒbƒNƒ}ƒ“j
 /// </summary>
 class EnemyBase : public GameObject
 {
 private:
-	//é€²è¡Œæ–¹å‘çŠ¶æ…‹
+	// is•ûŒüó‘Ô
 	enum eDirectionState : unsigned char
 	{
 		UP,
 		RIGHT,
 		DOWN,
 		LEFT,
-		NONE
+		NONE,
 	};
+
 protected:
+	std::vector<int> move_animation;		// ˆÚ“®‚ÌƒAƒjƒ[ƒVƒ‡ƒ“‰æ‘œ
+	std::vector<int> eye_animation;		// –Ú‚ÌƒAƒjƒ[ƒVƒ‡ƒ“‰æ‘œ
+	Vector2D old_location;					// ‘O‰ñ‚Ì location
+	Vector2D velocity;						// ˆÚ“®—Ê
+	eEnemyState enemy_state;				// ƒGƒlƒ~[ó‘Ô
+	eDirectionState now_direction_state;	// Œ»İis•ûŒüó‘Ô
+	eDirectionState next_direction_state;	// Ÿ‰ñis•ûŒüó‘Ô
+	int food_count;							// ‰a‚ğH‚×‚½”
+	float animation_time;					// ƒAƒjƒ[ƒVƒ‡ƒ“ŠÔ
+	int animation_count;					// ƒAƒjƒ[ƒVƒ‡ƒ““Yš
+	int eye;
+	ePanelID old_panel;						// ‘O‰ñƒpƒlƒ‹î•ñ
+	bool is_power_down;						// ƒpƒ[‰a‚ğH‚×‚½‚©H
+	bool is_izike;						// €‚ñ‚¾ó‘Ô‚É‚È‚Á‚½‚©H
 
-private:
-	std::vector<int> move_animation;		// ç§»å‹•ã®ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ç”»åƒ
-	std::vector<int> dying_animation;		// æ­»äº¡ã®ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ç”»åƒ
-	Vector2D old_location;					// å‰å›ã® location
-	Vector2D velocity;						// ç§»å‹•é‡
-	eEnemyState enemy_state;				// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼çŠ¶æ…‹
-	eDirectionState now_direction_state;	// ç¾åœ¨é€²è¡Œæ–¹å‘çŠ¶æ…‹
-	eDirectionState next_direction_state;	// æ¬¡å›é€²è¡Œæ–¹å‘çŠ¶æ…‹
-	int food_count;							// é¤Œã‚’é£Ÿã¹ãŸæ•°
-	float animation_time;					// ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³æ™‚é–“
-	int animation_count;					// ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³æ·»å­—
-	ePanelID old_panel;						// å‰å›ãƒ‘ãƒãƒ«æƒ…å ±
-	bool is_power_up;						// ãƒ‘ãƒ¯ãƒ¼é¤Œã‚’é£Ÿã¹ãŸã‹ï¼Ÿ
-	bool is_destroy;						// æ­»ã‚“ã çŠ¶æ…‹ã«ãªã£ãŸã‹ï¼Ÿ
+	// ˆÚ“®ƒAƒjƒ[ƒVƒ‡ƒ“‚Ì‡”Ô
+	const int animation_num[2] = { 0, 1};
 
-	// ç§»å‹•ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã®é †ç•ª
-	const int animation_num[4] = { 0, 1, 2, 1, };
+	const int animation_izike[2] = { 16, 17};
+
+	////–Ú‚ÌƒAƒjƒ[ƒVƒ‡ƒ“‚Ì‡”Ô
+	//const int animation_num_eye[];
 
 public:
+
 	EnemyBase();
 	virtual ~EnemyBase();
 
@@ -57,51 +63,45 @@ public:
 	virtual void Finalize() override;
 
 	/// <summary>
-	/// å½“ãŸã‚Šåˆ¤å®šé€šçŸ¥å‡¦ç†
+	/// “–‚½‚è”»’è’Ê’mˆ—
 	/// </summary>
-	/// <param name="hit_object">å½“ãŸã£ãŸã‚²ãƒ¼ãƒ ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒã‚¤ãƒ³ã‚¿</param>
+	/// <param name="hit_object">“–‚½‚Á‚½ƒQ[ƒ€ƒIƒuƒWƒFƒNƒg‚Ìƒ|ƒCƒ“ƒ^</param>
 	virtual void OnHitCollision(GameObjectBase* hit_object) override;
 
 public:
 	/// <summary>
-	/// é¤Œã‚’é£Ÿã¹ãŸæ•°å–å¾—
+	/// ‰a‚ğH‚×‚½”æ“¾
 	/// </summary>
-	/// <returns>é¤Œã‚’é£Ÿã¹ãŸæ•°</returns>
+	/// <returns>‰a‚ğH‚×‚½”</returns>
 	int GetFoodCount() const;
 
 	/// <summary>
-	/// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®çŠ¶æ…‹ã‚’å–å¾—ã™ã‚‹
+	/// ƒvƒŒƒCƒ„[‚Ìó‘Ô‚ğæ“¾‚·‚é
 	/// </summary>
-	/// <returns>ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®çŠ¶æ…‹</returns>
+	/// <returns>ƒvƒŒƒCƒ„[‚Ìó‘Ô</returns>
 	eEnemyState GetEnemyState() const;
 
 	/// <summary>
-	/// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒãƒ‘ãƒ¯ãƒ¼ã‚¢ãƒƒãƒ—ã—ã¦ã‚‹ã‹ç¢ºèªã™ã‚‹
+	/// ƒvƒŒƒCƒ„[‚Ìó‘Ô‚ğæ“¾‚·‚é
 	/// </summary>
-	/// <returns>ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®çŠ¶æ…‹</returns>
-	bool GetPowerUp() const;
+	/// <returns>ƒvƒŒƒCƒ„[‚Ìó‘Ô</returns>
+	void SetEnemyState();
 
 	/// <summary>
-	/// ãƒ‘ãƒ¯ãƒ¼ãƒ€ã‚¦ãƒ³ã•ã›ã‚‹
+	/// ƒpƒ[ƒ_ƒEƒ“‚³‚¹‚é
 	/// </summary>
 	void SetPowerDown();
 
-	/// <summary>
-	/// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒãƒ‘ãƒ¯ãƒ¼ã‚¢ãƒƒãƒ—ã—ã¦ã‚‹ã‹ç¢ºèªã™ã‚‹
-	/// </summary>
-	/// <returns>ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®çŠ¶æ…‹</returns>
-	bool GetDestroy() const;
 
-
-private:
+protected:
 	/// <summary>
-	/// ç§»å‹•å‡¦ç†
+	/// ˆÚ“®ˆ—
 	/// </summary>
-	/// <param name="delta_second">1ãƒ•ãƒ¬ãƒ¼ãƒ ã‚ãŸã‚Šã®æ™‚é–“</param>
-	void Movement(float delta_second);
+	/// <param name="delta_second">1ƒtƒŒ[ƒ€‚ ‚½‚è‚ÌŠÔ</param>
+	virtual void Movement(float delta_second);
 	/// <summary>
-	/// ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³åˆ¶å¾¡
+	/// ƒAƒjƒ[ƒVƒ‡ƒ“§Œä
 	/// </summary>
-	/// <param name="delta_second">1ãƒ•ãƒ¬ãƒ¼ãƒ ã‚ãŸã‚Šã®æ™‚é–“</param>
-	void AnimationControl(float delta_second);
+	/// <param name="delta_second">1ƒtƒŒ[ƒ€‚ ‚½‚è‚ÌŠÔ</param>
+	virtual void AnimationControl(float delta_second);
 };
