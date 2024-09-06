@@ -134,7 +134,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AppMain.cpp" />
+    <ClCompile Include="Objects\Enemy\BlueEnemy\BlueEnemy.cpp" />
     <ClCompile Include="Objects\Enemy\EnemyBase.cpp" />
+    <ClCompile Include="Objects\Enemy\PinkEnemy\PinkEnemy.cpp" />
+    <ClCompile Include="Objects\Enemy\YellowEnemy\YellowEnemy.cpp" />
     <ClCompile Include="Objects\Food\Food.cpp" />
     <ClCompile Include="Objects\Food\PowerFood.cpp" />
     <ClCompile Include="Objects\GameObjectBase.cpp" />
@@ -153,7 +156,10 @@
     <ClCompile Include="Utility\Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Objects\Enemy\BlueEnemy\BlueEnemy.h" />
     <ClInclude Include="Objects\Enemy\EnemyBase.h" />
+    <ClInclude Include="Objects\Enemy\PinkEnemy\PinkEnemy.h" />
+    <ClInclude Include="Objects\Enemy\YellowEnemy\YellowEnemy.h" />
     <ClInclude Include="Objects\Food\PowerFood.h" />
     <ClInclude Include="Objects\GameObject.h" />
     <ClInclude Include="Objects\Food\Food.h" />

@@ -1,6 +1,9 @@
 ﻿#include "InGameScene.h"
 #include "../../Objects/Player/Player.h"
 #include "../../Objects/Enemy/RedEnemy/RedEnemy.h"
+#include "../../Objects/Enemy/BlueEnemy/BlueEnemy.h"
+#include "../../Objects/Enemy/PinkEnemy/PinkEnemy.h"
+#include "../../Objects/Enemy/YellowEnemy/YellowEnemy.h"
 #include "../../Objects/Wall/Wall.h"
 #include "../../Objects/Food/Food.h"
 #include "../../Objects/Food/PowerFood.h"
@@ -12,6 +15,9 @@
 InGameScene::InGameScene() 
 	: player(nullptr)
 	, red_enemy(nullptr)
+	, pink_enemy(nullptr)
+	, blue_enemy(nullptr)
+	, yellow_enemy(nullptr)
 	, back_ground_image(NULL)
 	, back_ground_sound(NULL)
 	, pause_flag(false)
@@ -57,7 +63,7 @@ eSceneType InGameScene::Update(const float& delta_second)
 		__super::Update(delta_second);
 
 		// 全ての餌を食べたら、再スタート
-		if (player->GetFoodCount() >= 244)
+		if (player->GetFoodCount() >= 246)
 		{
 			return eSceneType::re_start;
 		}
@@ -71,6 +77,9 @@ eSceneType InGameScene::Update(const float& delta_second)
 		if (player->GetPowerUp() == true)
 		{
 			red_enemy->SetEnemyState();
+			blue_enemy->SetEnemyState();
+			pink_enemy->SetEnemyState();
+			yellow_enemy->SetEnemyState();
 		}
 	}
 
@@ -195,17 +204,17 @@ void InGameScene::LoadStageMapCSV()
 				generate_location = (Vector2D((float)(spos_x - 1), (float)(spos_y - 1)) * D_OBJECT_SIZE) + (D_OBJECT_SIZE / 2.0f);
 				red_enemy = CreateObject<RedEnemy>(generate_location);
 				break;
-			/*case 'M':
+			case 'M':
 				generate_location = (Vector2D((float)(spos_x - 1), (float)(spos_y - 1)) * D_OBJECT_SIZE) + (D_OBJECT_SIZE / 2.0f);
-				CreateObject<EnemyBase>(generate_location);
+				pink_enemy = CreateObject<PinkEnemy>(generate_location);
 				break;
-			case 'B':
+			case 'L':
 				generate_location = (Vector2D((float)(spos_x - 1), (float)(spos_y - 1)) * D_OBJECT_SIZE) + (D_OBJECT_SIZE / 2.0f);
-				CreateObject<EnemyBase>(generate_location);
+				blue_enemy = CreateObject<BlueEnemy>(generate_location);
 				break;
 			case 'Y':
 				generate_location = (Vector2D((float)(spos_x - 1), (float)(spos_y - 1)) * D_OBJECT_SIZE) + (D_OBJECT_SIZE / 2.0f);
-				CreateObject<EnemyBase>(generate_location);*/
+				yellow_enemy = CreateObject<YellowEnemy>(generate_location);
 				break;
 			// 上記以外
 			default:

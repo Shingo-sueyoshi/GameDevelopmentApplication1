@@ -7,6 +7,9 @@ class InGameScene : public SceneBase
 private:
 	class Player* player;		// プレイヤー情報
 	class RedEnemy* red_enemy;		// プレイヤー情報
+	class PinkEnemy* pink_enemy;		// プレイヤー情報
+	class BlueEnemy* blue_enemy;		// プレイヤー情報
+	class YellowEnemy* yellow_enemy;		// プレイヤー情報
 	int back_ground_image;		// 背景画像
 	int back_ground_sound;		// BGM
 	bool pause_flag;			// 一時停止フラグ

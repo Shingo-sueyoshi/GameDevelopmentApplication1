@@ -1,7 +1,7 @@
 #pragma once
 #include "../EnemyBase.h"
 
-class RedEnemy :public EnemyBase
+class BlueEnemy :public EnemyBase
 {
 private:
 
@@ -9,8 +9,8 @@ public:
 
 	std::vector<int> move_animation;		// 移動のアニメーション画像
 
-	RedEnemy();
-	~RedEnemy();
+	BlueEnemy();
+	~BlueEnemy();
 
 	void Initialize() override;
 	void Update(float delta_second) override;
@@ -18,7 +18,7 @@ public:
 	void Finalize() override;
 
 	// 移動アニメーションの順番
-	const int animation_num[2] = { 0, 1};
+	const int animation_num[2] = { 4, 5 };
 
 public:
 	/// <summary>

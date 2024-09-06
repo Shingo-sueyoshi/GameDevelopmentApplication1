@@ -18,7 +18,8 @@ EnemyBase::EnemyBase() :
 	animation_count(0),
 	eye(),
 	old_panel(ePanelID::NONE),
-	is_power_down(false)
+	is_power_down(false),
+	is_izike(false)
 {
 
 }
@@ -32,6 +33,7 @@ void EnemyBase::Initialize()
 {
 	// アニメーション画像の読み込み
 	ResourceManager* rm = ResourceManager::GetInstance();
+	move_animation = rm->GetImages("Resource/Images/monster.png", 20, 20, 1, 32, 32);
 	eye_animation = rm->GetImages("Resource/Images/eyes.png", 4, 4, 1, 32, 32);
 
 	eye = eye_animation[3];
@@ -59,8 +61,8 @@ void EnemyBase::Update(float delta_second)
 	switch (enemy_state)
 	{
 	case eEnemyState::ENEMY_IDLE:
-		// 画像の設定
-		image = move_animation[9];
+		//// 画像の設定
+		//image = move_animation[9];
 		break;
 	case eEnemyState::ENEMY_MOVE:
 		// 移動処理

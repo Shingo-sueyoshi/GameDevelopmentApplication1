@@ -42,7 +42,7 @@ protected:
 	int eye;
 	ePanelID old_panel;						// 前回パネル情報
 	bool is_power_down;						// パワー餌を食べたか？
-	bool is_izike;						// 死んだ状態になったか？
+	bool is_izike;						// イジケ状態になったか？
 
 	// 移動アニメーションの順番
 	const int animation_num[2] = { 0, 1};
